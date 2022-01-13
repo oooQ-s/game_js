@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Игра</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <form action="" method="get" class="authorisation" id="authorisation">
+            <label for="nickname">Enter your nickname:</label>
+            <input type="text" name="nickname" id="nickname" required, autocomplete="nickname" , autofocus>
+            <button class="nickname_submit" , id="nickname_submit"> Войти </button>
+        </form>
+        <div class="logged_in" id="logged_in">
+            <div class="greeting_user">
+
+            </div>
+            <button id="user_exit">
+                Выйти
+            </button>
+        </div>
+
+    </header>
+    <main>
+        <div class="main_menu">
+            <div class="greet">
+                <h1>Игра на внимательность и реакцию </h1>
+            </div>
+            <form action="" method="get" class="begin_game">
+                <button class="start_game" , id="start_game" disabled> Начать игру </button>
+                <!-- <input type="button" name="start_game" id="start_game" value="Начать игру" disabled> -->
+                <!-- <label for="difficulty">Выберите сложность</label>
+                <input type="button" name="difficulty" id="difficulty" value="Выберите сложность"> -->
+            </form>
+            <div class="difficulty">
+                <button onclick="myFunction()" class="dropbtn">Простой</button>
+                <div id="dropdownDiff" class="dropdown-content">
+                    <a href="#">Простой</a>
+                    <a href="#">Сложный</a>
+                </div>
+            </div>
+            <button onclick="openScores()" class="general_results" , id="general_results" disabled> Результаты </button>
+
+        </div>
+        <div class="results_page">
+            <div class="score-container">
+                <p>Таблица очков:</p>
+                <div class="users-container">
+                    <!-- тут будут кнопки-переключатели для юзеров-->
+                </div>
+                <div class="user-results">
+                    <div class="ez">Простой</div>
+                    <div class="result_ez"> </div>
+                    <div class="hard">Сложный</div>
+                    <div class="result_hard"> </div>
+                </div>
+
+            </div>
+            <button onclick="openMenu()" class="go_to_menu">В меню</button>
+
+        </div>
+        <div class="game">
+            <div class="level_info" id="level_info">
+                <p class="current_level_info">Current level: 1</p>
+                <p class="dop_timer_2">||</p>
+                <p class="dop_timer">Секунд осталось: </p>
+                <div class="timer">
+                </div>
+                
+            </div>
+            <div class="game_window">
+                <div class="goal">
+                    <div id="goal_text"></div>
+                    <div id="color_box" style="color:crimson">&#9632;</div>
+                </div>
+                <div class="game_proccess" id="game_proccess">
+
+                </div>
+                <div class="game_results">
+                    <div class="result_explain">
+                        Поздравляю! Уровень пройден!
+                    </div>
+                    <div class="res_points">
+
+                    </div>
+                    <div class="res_fails">
+
+                    </div>
+                    <div class="moveto_buttons">
+                        <button class="moveto_nextlvl" disabled>Следующий Уровень</button>
+                        <button class="retrylvl" disabled>Переиграть Уровень</button>
+                        <button onclick="openScores()" class="check_results">Посмотреть результаты</button>
+                        <button class="moveto_menu">Главное меню</button>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </main>
+
+
+    <script src="game.js"></script>
+</body>
+
+</html>

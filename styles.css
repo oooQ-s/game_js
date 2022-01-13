@@ -1,0 +1,329 @@
+body{
+
+    font-size: 15px;
+    font-weight: normal;
+    /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: 'Century Gothic';
+    font-weight: bold;
+    margin: 0;
+    /* overflow: hidden; */
+    -ms-overflow-style: none;  /* HIDE SCROLLBAR FOR IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    background-image: url(pics/Screenshot_1.png);
+
+}
+
+button{
+    font-size: 15px;
+    font-weight: normal;
+    /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    font-family: 'Century Gothic';
+    font-weight: bold;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 5%;
+}
+
+.logged_in {
+    display: none;
+}
+
+.greeting_user {
+    margin-right: 5px;
+    font-size: 25px;
+}
+
+.main_menu {
+    margin-top: 50px;
+    /* display: flex;
+
+    justify-content: center; */
+}
+
+.greet {
+    display: flex;
+    justify-content: center;
+}
+
+.begin_game {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+
+#general_results{
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.difficulty {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* #user_exit{
+    display: none;
+} */
+
+
+/* Dropdown Button */
+
+.dropbtn {
+    background-color: #ebe4e4;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Dropdown button on hover & focus */
+
+.dropbtn:hover,
+.dropbtn:focus {
+    background-color: #000305;
+}
+
+
+/* The container <div> - needed to position the dropdown content */
+
+.difficulty {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {
+    background-color: #ddd
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+
+.show {
+    display: block;
+}
+
+.game {
+    display: none;
+
+}
+
+.level_info{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items:center;
+    font-size: 18px;
+
+}
+
+.dop_timer{
+    margin-right: 2px;
+    margin-left: 10px;
+
+}
+
+.timer{
+    margin-right: 2px;
+}
+
+.current_level_info{
+    margin-right: 10px;
+}
+
+.goal {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items:center;
+    font-size: 22px;
+}
+
+.game_proccess {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.game_results {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 40px;
+
+
+}
+
+.result_explain{
+    padding-bottom: 40px;
+}
+.res_fails{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 40px;
+
+
+}
+
+.square_rand {
+    background-color: #fff6d4;
+    width: 27%;
+    font-size: 20px;
+    height: 80px;
+    margin: 20px;
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 1%;
+    text-align: center;
+}
+
+
+/* document.getElementById(`square_${i}`).style. */
+
+.caption_rand {
+    font-family: Helvetica, Arial, sans-serif;
+    /* text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa; */
+    text-shadow: 1px 1px 1px #000;
+}
+
+.caption_glow {
+    text-shadow: 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+
+#goal_text {
+    padding-right: 0.5%;
+}
+
+#color_box {
+    display: none;
+}
+
+
+.score-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.users-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.user-results{
+    display: grid;
+    grid-template-columns: 200px 200px;
+
+
+}
+
+
+/* moveto buttons here  */
+
+.moveto_buttons {
+    display: flex;
+}
+
+
+
+.check_results {
+    display: none;
+}
+
+button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #000000;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background-color: #000000;
+    color: #FFFFFF;
+}
+
+@media all and (max-width:30em) {
+    a.button1 {
+        display: block;
+        margin: 0.4em auto;
+    }
+}
+
+h1{
+    font-size: 48px;
+
+}
+
+.results_page{
+    display: none;
+    flex-wrap: wrap;
+    font-size: 35px;
+
+}
+
+
+
+.img-opacity{
+    opacity: 40%;
+}
+
+/* .go_to_menu{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+} */
