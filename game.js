@@ -802,3 +802,14 @@ function openMenu() {
   document.querySelector('.moveto_nextlvl').style.display = 'block'
   document.querySelector('.results_page').style.display = 'none';
 }
+
+
+
+function toggleTheme() {
+  var theme = document.getElementsByTagName('link')[0];
+  if (theme.getAttribute('href') == 'styles.css') {
+      theme.setAttribute('href', 're_style.css');
+  } else {
+      theme.setAttribute('href', 'styles.css');
+  }
+}

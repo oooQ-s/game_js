@@ -9,10 +9,11 @@ body{
     /* overflow: hidden; */
     -ms-overflow-style: none;  /* HIDE SCROLLBAR FOR IE and Edge */
     scrollbar-width: none;  /* Firefox */
-    background-image: url(pics/Screenshot_1.png);
+    background-image: url(pics/image.png);
     height: 100vh;
     overflow: hidden;
     background-size: cover;
+    color: white;
 }
 
 button{
@@ -58,12 +59,6 @@ header {
 }
 
 
-/* #general_results{
-    display: flex;
-    margin-bottom: 20px;
-    justify-content: center;
-} */
-
 .res_gen_button{
     display: flex;
     margin-top: 20px;
@@ -84,12 +79,13 @@ header {
 /* Dropdown Button */
 
 .dropbtn {
-    background-color: #ebe4e4;
-    color: black;
+    color: #ebe4e4;
+    background-color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border: 0.1em solid #ffffff;
 }
 
 
@@ -139,7 +135,7 @@ header {
 }
 
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* Show the dropdown menu */
 
 .show {
     display: block;
@@ -208,13 +204,13 @@ header {
 }
 
 .square_rand {
-    background-color: #fff6d4;
+    background-color: #49473ef3;
     width: 27%;
     font-size: 20px;
     height: 80px;
     margin: 20px;
     border-radius: 25px;
-    border: 2px solid #73AD21;
+    border: 2px solid #3d5c11;
     padding: 1%;
     text-align: center;
 }
@@ -287,21 +283,27 @@ header {
 button {
     display: inline-block;
     padding: 0.35em 1.2em;
-    border: 0.1em solid #000000;
+    border: 0.1em solid #ffffff;
     margin: 0 0.3em 0.3em 0;
     border-radius: 0.12em;
     box-sizing: border-box;
     text-decoration: none;
     /* font-family: 'Roboto', sans-serif; */
     font-weight: 300;
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     transition: all 0.2s;
+    background-color: black;
 }
 
 button:hover {
-    background-color: #000000;
-    color: #FFFFFF;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.dropbtn:hover{
+    color: #000000;
+    background-color: #FFFFFF;
 }
 
 @media all and (max-width:30em) {
@@ -333,12 +335,19 @@ h1{
 .toggleTheme{
     background: url(pics/icons8-change-theme-30.png) no-repeat;
     border: 0px;
+    filter: invert(1);
 }
 
 .toggleTheme:hover{
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+/* .go_to_menu{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+} */
 
 .for_go_menu_dv{
     /* display: flex; */

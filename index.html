@@ -4,10 +4,12 @@
 <head>
     <title>Игра</title>
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 
 <body>
     <header>
+        <button onclick="toggleTheme()" class="toggleTheme"></button>
         <form action="" method="get" class="authorisation" id="authorisation">
             <label for="nickname">Enter your nickname:</label>
             <input type="text" name="nickname" id="nickname" required, autocomplete="nickname" , autofocus>
@@ -41,7 +43,9 @@
                     <a href="#">Сложный</a>
                 </div>
             </div>
-            <button onclick="openScores()" class="general_results" , id="general_results" disabled> Результаты </button>
+            <div class="res_gen_button">
+                <button onclick="openScores()" class="general_results" , id="general_results" disabled> Результаты </button>
+            </div>
 
         </div>
         <div class="results_page">
@@ -58,7 +62,9 @@
                 </div>
 
             </div>
-            <button onclick="openMenu()" class="go_to_menu">В меню</button>
+            <div class="for_go_menu_dv">
+                <button onclick="openMenu()" class="go_to_menu">В меню</button>
+            </div>
 
         </div>
         <div class="game">
