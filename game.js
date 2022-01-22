@@ -1,7 +1,7 @@
 let rectangleNumber = 6; //количество прямоугольников
 let curUser = localStorage.getItem('nickname');
 let usersList = '';
-
+let interval;
 
 if (localStorage.getItem('nickname')) {
   document.getElementById('start_game').disabled = false
@@ -107,7 +107,7 @@ document.getElementById('start_game').addEventListener("click", function () {
   document.querySelector('.timer').style.display = 'flex';
   document.querySelector('.dop_timer').style.display = 'block';
   document.querySelector('.dop_timer_2').style.display = 'block';
-  
+
 
   if (finish) {
     finish = false
@@ -140,7 +140,7 @@ document.getElementById('start_game').addEventListener("click", function () {
     }
   }
 });
-
+//
 
 //установка никнейма
 document.getElementById('nickname_submit').addEventListener("click", function () {
@@ -149,6 +149,8 @@ document.getElementById('nickname_submit').addEventListener("click", function ()
   document.querySelector('.retrylvl').disabled = false
   document.querySelector('.general_results').disabled = false
   curUser = localStorage.getItem('nickname');
+  localStorage.setItem('difficulty', 'Простой');
+
 
   if (!document.getElementById('nickname').value.includes('**') && document.getElementById('nickname').value != '') {
     let inputNickname = document.getElementById('nickname');
@@ -194,7 +196,7 @@ document.getElementById('user_exit').addEventListener("click", function () {
   document.querySelector('.check_results').style.display = 'none'
   document.querySelector('.moveto_nextlvl').style.display = 'block'
   document.querySelector('.results_page').style.display = 'none'
-  
+
   clearInterval(time);
 
 
@@ -399,6 +401,8 @@ function level_1() {
 
 
       document.querySelector('.res_fails').textContent = `Количество ошибок: ${faleCount}`;
+      document.querySelector('.res_points').textContent = `Количество очков: ${pointsLevel}`;
+
 
       if (localStorage.getItem('nickname')) {
         localStorage.setItem('level', 2);
@@ -460,11 +464,57 @@ function level_2() {
   //     localStorage.setItem('level', 3);
   //   }
   // });
+  let ab = document.querySelectorAll('.square_rand')
+  let randSqrMove = Math.floor(Math.random() * 3) + 1
+
+  if (rectangleNumber == 6) {
+
+
+    // switch (randSqrMove) {
+    //   case 1:
+    //     interval = setInterval(() => {
+    //       easy_1(ab);
+    //     }, 2000);//задержка 0.5с
+    //     break;
+    //   case 2:
+    //     interval = setInterval(() => {
+    //       easy_2(ab);
+    //     }, 2000);//задержка 0.5с
+    //     break;
+    //   case 3:
+    //     interval = setInterval(() => {
+    //       easy_3(ab);
+    //     }, 2000);//задержка 0.5с
+    //     break;
+    // }
+  }
+  else if (rectangleNumber == 9) {
+    switch (randSqrMove) {
+      case 1:
+        interval = setInterval(() => {
+          hard_1(ab);
+        }, 2000);//задержка 2с
+        break;
+      case 2:
+        interval = setInterval(() => {
+          hard_2(ab);
+        }, 2000);//задержка 2с
+        break;
+      case 3:
+        interval = setInterval(() => {
+          hard_3(ab);
+        }, 2000);//задержка 2с
+        break;
+    }
+  }
+
+
+
 
 
   document.getElementById('game_proccess').addEventListener("click", function (ev) {
     let target = ev.target.closest('.square_rand')
-    if (target.className != 'square_rand' && target.className != 'caption_rand') return;
+    if (target == null || target.classList[0] != 'square_rand') return; //new v2 works cool. проверяем первый класс - square_rand
     if (target.id == `square_${rectangleNumber - correctAnswer - 1}`) {
       let currRectanglesShow = document.querySelectorAll('.square_rand')
       for (let i = 0; i < currRectanglesShow.length; i++) {//удаление прямоугольников
@@ -493,8 +543,9 @@ function level_2() {
       document.querySelector('.timer').style.display = 'none';
       document.querySelector('.dop_timer').style.display = 'none';
       document.querySelector('.dop_timer_2').style.display = 'none';
-      
+
       document.querySelector('.res_fails').textContent = `Количество ошибок: ${faleCount}`;
+      document.querySelector('.res_points').textContent = `Количество очков: ${pointsLevel}`;
       if (localStorage.getItem('nickname')) {
         localStorage.setItem('level', 3);
       }
@@ -535,8 +586,12 @@ function level_3() {
     document.getElementById('game_proccess').appendChild(square)
     document.getElementById(`square_${i}`).appendChild(caption_m)
     document.getElementById(`square_${i}`).style.color = keys[reverseRandomName]//смена цвета текста
+    // if(i == 4){
+    //   square.classList.add('animation_move_sqr');
+    // }
 
-
+    //   square.classList.add('animation_move_sqr_1');
+    // }
 
     while (reverseKeysColorSet[i] == keysControlPanelArrBackground[i]) {
       keysControlPanelArrBackground[i] = Math.floor(Math.random() * (keys.length - 1))
@@ -548,9 +603,57 @@ function level_3() {
 
   }
   let correctAnswer = Math.floor(Math.random() * rectangleNumber)//выбор случайного правильного ответа
-  let goalText = document.createTextNode(`Нажмите на прямоугольник со следующей надписью: ${colorValues[keysControlPanelArr[correctAnswer]]} `)
-
+  let goalText = document.createTextNode(`Нажмите на прямоугольник со следующей надписью: ${colorValues[keysControlPanelArr[correctAnswer]]} и цветом фона ${colorValues[keysControlPanelArrBackground[correctAnswer]]}  `)
   document.getElementById('goal_text').appendChild(goalText)//добавление фразы в хтмл
+
+  //   function getRandomNumber(min = 1, max = 5) {
+  //     return Math.floor(Math.random() * (max - min + 1)) + min
+  // }
+
+  let ab = document.querySelectorAll('.square_rand')
+  let randSqrMove = Math.floor(Math.random() * 3) + 1
+
+  if (rectangleNumber == 6) {
+    switch (randSqrMove) {
+      case 1:
+        interval = setInterval(() => {
+          easy_1(ab);
+        }, 2000);//задержка 0.5с
+        break;
+      case 2:
+        interval = setInterval(() => {
+          easy_2(ab);
+        }, 2000);//задержка 0.5с
+        break;
+      case 3:
+        interval = setInterval(() => {
+          easy_3(ab);
+        }, 2000);//задержка 0.5с
+        break;
+    }
+  }
+  else if (rectangleNumber == 9) {
+    switch (randSqrMove) {
+      case 1:
+        interval = setInterval(() => {
+          hard_1(ab);
+        }, 2000);//задержка 2с
+        break;
+      case 2:
+        interval = setInterval(() => {
+          hard_2(ab);
+        }, 2000);//задержка 2с
+        break;
+      case 3:
+        interval = setInterval(() => {
+          hard_3(ab);
+        }, 2000);//задержка 2с
+        break;
+    }
+  }
+
+
+
   // document.getElementById(`square_${correctAnswer}`).addEventListener("click", function () {
   //   let currRectanglesShow = document.querySelectorAll('.square_rand')
   //   for (let i = 0; i < currRectanglesShow.length; i++) {//удаление прямоугольников
@@ -567,7 +670,7 @@ function level_3() {
 
   document.getElementById('game_proccess').addEventListener("click", function (ev) {
     let target = ev.target.closest('.square_rand')
-    if (target.className != 'square_rand' && target.className != 'caption_rand') return;
+    if (target == null || target.classList[0] != 'square_rand') return; //new v2 works cool. проверяем первый класс - square_rand
     if (target.id == `square_${correctAnswer}`) {
       let currRectanglesShow = document.querySelectorAll('.square_rand')
 
@@ -575,6 +678,7 @@ function level_3() {
         currRectanglesShow[i].remove()
       }
       clearInterval(time);
+      clearInterval(interval);
 
       let pointsLevel = +document.querySelector('.timer').textContent * 15 - 4 * faleCount
       let curUser = localStorage.getItem('nickname');
@@ -596,6 +700,8 @@ function level_3() {
       document.querySelector('.dop_timer').style.display = 'none';
       document.querySelector('.dop_timer_2').style.display = 'none';
       document.querySelector('.res_fails').textContent = `Количество ошибок: ${faleCount}`;
+      document.querySelector('.res_points').textContent = `Количество очков: ${pointsLevel}`;
+
 
 
       if (localStorage.getItem('nickname')) {
@@ -649,8 +755,8 @@ function level_4() {
 
   }
   let correctAnswer = Math.floor(Math.random() * rectangleNumber)//выбор случайного правильного ответа
-  let goalText = document.createTextNode(`Нажмите на текст следующего цвета: ${colorValues[keysControlPanelArr[correctAnswer]]} `)
-
+  let goalText = document.createTextNode(`Нажмите на текст следующего цвета: ${colorValues[keysControlPanelArr[correctAnswer]]} и цветом фона ${colorValues[keysControlPanelArrBackground[rectangleNumber - correctAnswer - 1]]} `)
+  console.log(keysControlPanelArrBackground)
   document.getElementById('goal_text').appendChild(goalText)//добавление фразы в хтмл
   // document.getElementById(`square_${rectangleNumber - correctAnswer - 1}`).addEventListener("click", function () {
   //   let currRectanglesShow = document.querySelectorAll('.square_rand')
@@ -664,7 +770,47 @@ function level_4() {
   //   document.querySelector('.timer').style.display = 'none';
 
 
+  let ab = document.querySelectorAll('.square_rand')
+  let randSqrMove = Math.floor(Math.random() * 3) + 1
 
+   if (rectangleNumber == 6) {
+    switch (randSqrMove) {
+      case 1:
+        interval = setInterval(() => {
+          easy_1(ab);
+        }, 2000);//задержка 0.5с
+        break;
+      case 2:
+        interval = setInterval(() => {
+          easy_2(ab);
+        }, 2000);//задержка 0.5с
+        break;
+      case 3:
+        interval = setInterval(() => {
+          easy_3(ab);
+        }, 2000);//задержка 0.5с
+        break;
+    }
+  }
+  else if (rectangleNumber == 9) {
+    switch (randSqrMove) {
+      case 1:
+        interval = setInterval(() => {
+          hard_1(ab);
+        }, 2000);//задержка 2с
+        break;
+      case 2:
+        interval = setInterval(() => {
+          hard_2(ab);
+        }, 2000);//задержка 2с
+        break;
+      case 3:
+        interval = setInterval(() => {
+          hard_3(ab);
+        }, 2000);//задержка 2с
+        break;
+    }
+  }
 
   //   if (localStorage.getItem('nickname')) {
   //     localStorage.setItem('level', 5);
@@ -675,7 +821,7 @@ function level_4() {
 
   document.getElementById('game_proccess').addEventListener("click", function (ev) {
     let target = ev.target.closest('.square_rand')
-    if (target.className != 'square_rand' && target.className != 'caption_rand') return;
+    if (target == null || target.classList[0] != 'square_rand') return; //new v2 works cool. проверяем первый класс - square_rand
     if (target.id == `square_${rectangleNumber - correctAnswer - 1}`) {
       let currRectanglesShow = document.querySelectorAll('.square_rand')
       for (let i = 0; i < currRectanglesShow.length; i++) {//удаление прямоугольников
@@ -689,13 +835,9 @@ function level_4() {
       let curDiff = localStorage.getItem('difficulty');
       if (pointsLevel <= 0) {
         localStorage.setItem(`${curUser}**${locLvlCur}**${curDiff}`, 0);
-
-
       }
       else {
         localStorage.setItem(`${curUser}**${locLvlCur}**${curDiff}`, pointsLevel);
-
-
       }
 
       correctAnswer = -1;
@@ -707,6 +849,8 @@ function level_4() {
       document.querySelector('.dop_timer').style.display = 'none';
       document.querySelector('.dop_timer_2').style.display = 'none';
       document.querySelector('.res_fails').textContent = `Количество ошибок: ${faleCount}`;
+      document.querySelector('.res_points').textContent = `Количество очков: ${pointsLevel}`;
+
 
       if (localStorage.getItem('nickname')) {
         localStorage.setItem('level', 5);
@@ -808,8 +952,230 @@ function openMenu() {
 function toggleTheme() {
   var theme = document.getElementsByTagName('link')[0];
   if (theme.getAttribute('href') == 'styles.css') {
-      theme.setAttribute('href', 're_style.css');
+    theme.setAttribute('href', 're_style.css');
   } else {
-      theme.setAttribute('href', 'styles.css');
+    theme.setAttribute('href', 'styles.css');
   }
+}
+
+
+function easy_1(sqr) {
+  sqr[0].classList.add('animation_move_sqr_right');
+  sqr[1].classList.add('animation_move_sqr_left');
+  sqr[2].classList.add('animation_move_sqr_down');
+  sqr[5].classList.add('animation_move_sqr_up');
+
+  setTimeout(() => {
+    sqr[3].classList.add('animation_move_sqr_right');
+    sqr[4].classList.add('animation_move_sqr_left');
+  }, 1000);//Для асинхрона
+
+  setTimeout(() => {
+    sqr[0].classList.remove('animation_move_sqr_right');
+    sqr[1].classList.remove('animation_move_sqr_left');
+    sqr[2].classList.remove('animation_move_sqr_down');
+    sqr[5].classList.remove('animation_move_sqr_up');
+
+    sqr[3].classList.remove('animation_move_sqr_right');
+    sqr[4].classList.remove('animation_move_sqr_left');
+  }, 500);
+}
+
+
+function easy_2(sqr) {
+  sqr[0].classList.add('animation_move_sqr_right_down_right');
+  sqr[5].classList.add('animation_move_sqr_left_up_left');
+
+  sqr[1].classList.add('animation_move_sqr_left_down');
+  sqr[3].classList.add('animation_move_sqr_right_up');
+
+  setTimeout(() => {
+    sqr[2].classList.add('animation_move_sqr_left_down');
+    sqr[4].classList.add('animation_move_sqr_right_up');
+  }, 1000);//Для асинхрона
+
+  setTimeout(() => {
+    sqr[0].classList.remove('animation_move_sqr_right_down_right');
+    sqr[5].classList.remove('animation_move_sqr_left_up_left');
+
+    sqr[1].classList.remove('animation_move_sqr_left_down');
+    sqr[3].classList.remove('animation_move_sqr_right_up');
+
+
+    sqr[2].classList.remove('animation_move_sqr_left_down');
+    sqr[4].classList.remove('animation_move_sqr_right_up');
+
+  }, 500);
+}
+
+function easy_3(sqr) {
+  sqr[0].classList.add('animation_move_sqr_right_max');
+  sqr[2].classList.add('animation_move_sqr_left_max');
+
+  sqr[1].classList.add('animation_move_sqr_right_down');
+  sqr[5].classList.add('animation_move_sqr_left_up');
+
+  setTimeout(() => {
+    sqr[3].classList.add('animation_move_sqr_right');
+    sqr[4].classList.add('animation_move_sqr_left');
+  }, 1000);//Для асинхрона
+  setTimeout(() => {
+    sqr[0].classList.remove('animation_move_sqr_right_max');
+    sqr[2].classList.remove('animation_move_sqr_left_max');
+
+    sqr[1].classList.remove('animation_move_sqr_right_down');
+    sqr[5].classList.remove('animation_move_sqr_left_up');
+
+
+    sqr[3].classList.remove('animation_move_sqr_right');
+    sqr[4].classList.remove('animation_move_sqr_left');
+
+  }, 500);
+}
+
+
+function hard_1(sqr) {
+  sqr[0].classList.add('animation_move_sqr_down');
+  sqr[3].classList.add('animation_move_sqr_right_up');
+  sqr[1].classList.add('animation_move_sqr_left');
+
+  sqr[5].classList.add('animation_move_sqr_left_down');
+  sqr[8].classList.add('animation_move_sqr_up');
+  sqr[7].classList.add('animation_move_sqr_right');
+
+  sqr[2].classList.add('animation_opacity_low');
+
+
+  setTimeout(() => {
+
+    sqr[4].classList.add('animation_move_sqr_left_down');
+    sqr[6].classList.add('animation_move_sqr_right_up');
+
+  }, 1000);//Для асинхрона
+  setTimeout(() => {
+    sqr[0].classList.remove('animation_move_sqr_down');
+    sqr[1].classList.remove('animation_move_sqr_left');
+    sqr[3].classList.remove('animation_move_sqr_right_up');
+
+    sqr[4].classList.remove('animation_move_sqr_left_down');
+    sqr[6].classList.remove('animation_move_sqr_right_up');
+
+    sqr[5].classList.remove('animation_move_sqr_left_down');
+    sqr[8].classList.remove('animation_move_sqr_up');
+    sqr[7].classList.remove('animation_move_sqr_right');
+
+    sqr[2].classList.remove('animation_opacity_low');
+  }, 500);
+}
+
+
+function hard_2(sqr) {
+  sqr[0].classList.add('animation_move_sqr_down_max');
+  sqr[6].classList.add('animation_move_sqr_right_up');
+  sqr[4].classList.add('animation_move_sqr_left_up');
+
+  sqr[3].classList.add('animation_move_sqr_right_up');
+  sqr[1].classList.add('animation_move_sqr_right_down');
+  sqr[5].classList.add('animation_move_sqr_left_max');
+
+
+
+
+
+  // sqr[4].classList.add('animation_opacity_low');
+
+
+  setTimeout(() => {
+
+    sqr[2].classList.add('animation_move_sqr_left_down_down');
+    sqr[7].classList.add('animation_move_sqr_right');
+    sqr[8].classList.add('animation_move_sqr_up_max');
+
+  }, 1000);//Для асинхрона
+  setTimeout(() => {
+    sqr[0].classList.remove('animation_move_sqr_down_max');
+    sqr[6].classList.remove('animation_move_sqr_right_up');
+    sqr[4].classList.remove('animation_move_sqr_left_up');
+
+    sqr[3].classList.remove('animation_move_sqr_right_up');
+    sqr[1].classList.remove('animation_move_sqr_right_down');
+    sqr[5].classList.remove('animation_move_sqr_left_max');
+
+
+    sqr[2].classList.remove('animation_move_sqr_left_down_down');
+    sqr[7].classList.remove('animation_move_sqr_right');
+    sqr[8].classList.remove('animation_move_sqr_up_max');
+  }, 500);
+}
+
+
+function hard_3(sqr) {
+  sqr[0].classList.add('animation_move_sqr_right_max');
+  sqr[2].classList.add('animation_move_sqr_left_max');
+
+  sqr[1].classList.add('animation_move_sqr_down');
+  sqr[4].classList.add('animation_move_sqr_up');
+
+  sqr[3].classList.add('animation_move_sqr_down');
+  sqr[6].classList.add('animation_move_sqr_up');
+
+
+  sqr[8].classList.add('animation_opacity_low');
+
+
+
+  setTimeout(() => {
+
+    sqr[5].classList.add('animation_move_sqr_left_down');
+    sqr[7].classList.add('animation_move_sqr_right_up');
+
+
+  }, 1000);//Для асинхрона
+  setTimeout(() => {
+    sqr[0].classList.remove('animation_move_sqr_right_max');
+    sqr[2].classList.remove('animation_move_sqr_left_max');
+
+    sqr[1].classList.remove('animation_move_sqr_down');
+    sqr[4].classList.remove('animation_move_sqr_up');
+
+    sqr[3].classList.remove('animation_move_sqr_down');
+    sqr[6].classList.remove('animation_move_sqr_up');
+
+
+    sqr[5].classList.remove('animation_move_sqr_left_down');
+    sqr[7].classList.remove('animation_move_sqr_right_up');
+
+
+    sqr[8].classList.remove('animation_opacity_low');
+  }, 500);
+}
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+
+function pre_downl(){
+  
+  let t_sum = 0;
+  for (let i = 1; i <= 4; i++) {
+    t_sum += +localStorage.getItem(`${someUser}**${i}**Простой`)
+
+  }
+  let ezLvlInf = t_sum;
+  let t_sum_h = 0;
+  for (let i = 1; i <= 4; i++) {
+    t_sum_h += +localStorage.getItem(`${someUser}**${i}**Сложный`)
+
+  }
+  let hardLvlInf = t_sum_h;
+  download('results.txt', `Результаты для пользователя ${someUser}\nПростой:${ezLvlInf}\nСложный:${hardLvlInf}`);
 }

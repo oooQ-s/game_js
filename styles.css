@@ -90,6 +90,8 @@ header {
     font-size: 16px;
     border: none;
     cursor: pointer;
+    border: 0.05em solid #000000;
+
 }
 
 
@@ -207,6 +209,15 @@ header {
 
 }
 
+.res_points{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 40px;
+
+
+}
+
 .square_rand {
     background-color: #fff6d4;
     width: 27%;
@@ -217,6 +228,8 @@ header {
     border: 2px solid #73AD21;
     padding: 1%;
     text-align: center;
+    transition: all 0.5s;
+    /* HAHAHAH */
 }
 
 
@@ -340,10 +353,98 @@ h1{
 }
 
 
+
+
 .for_go_menu_dv{
     /* display: flex; */
     margin-top: 20px;
     /* justify-content: center; */
     text-align: center;
     width: 100%;
+}
+
+
+.animation_opacity_low{
+    opacity: 10%;
+}
+
+
+.animation_move_sqr_left{
+    transform:translate(-109%);
+    transition: all 0.5s;
+
+}
+
+.animation_move_sqr_right{
+    transform:translate(109%);
+    transition: all 0.5s;
+    
+}
+
+.animation_move_sqr_left_max{
+    transform:translate(-218%);
+    transition: all 0.5s;
+
+}
+
+.animation_move_sqr_right_max{
+    transform:translate(218%);
+    transition: all 0.5s;
+    
+}
+
+.animation_move_sqr_up{
+    transform:translate(0%, -135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_up_max{
+    transform:translate(0%, -271%); /*271*/
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_down{
+    transform:translate(0%, 135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_down_max{
+    transform:translate(0%, 271%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_left_up{
+    transform:translate(-109%, -135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_right_up{
+    transform:translate(109%, -135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_right_down{
+    transform:translate(109%, 135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_left_down{
+    transform:translate(-109%, 135.5%);
+    transition: all 0.5s;
+}
+
+
+.animation_move_sqr_right_down_right{
+    transform:translate(218%, 135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_left_up_left{
+    transform:translate(-218%, -135.5%);
+    transition: all 0.5s;
+}
+
+.animation_move_sqr_left_down_down{
+    transform:translate(-109%, 271%);
+    transition: all 0.5s;
 }
