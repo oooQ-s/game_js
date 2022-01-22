@@ -3,6 +3,10 @@ let curUser = localStorage.getItem('nickname');
 let usersList = '';
 let interval;
 localStorage.setItem('difficulty', 'Простой');
+let isTaped;
+if(!isTaped){
+  document.getElementById('start_game').disabled = true
+}
 
 if (localStorage.getItem('nickname')) {
   document.getElementById('start_game').disabled = false
@@ -24,6 +28,9 @@ function myFunction() {
   document.getElementById('dropdownDiff').addEventListener("click", function (ev) {
     let target = ev.target
     localStorage.setItem('difficulty', target.textContent);
+    isTaped = true
+  document.getElementById('start_game').disabled = false
+
     // document.querySelector('.dropbtn').textContent = target.textContent //смена кнопки сложности
 
   });
@@ -319,6 +326,10 @@ document.querySelector('.moveto_menu').addEventListener("click", function () {
   document.querySelector('.check_results').style.display = 'none'
   document.querySelector('.moveto_nextlvl').style.display = 'block'
 });
+
+if(!isTaped){
+  document.getElementById('start_game').disabled = true
+}
 
 function level_1() {
   let keysControlPanelArr = Array.from(getRandomSet(0, keys.length - 1, rectangleNumber))//массив случайных различных цветов
@@ -1179,4 +1190,8 @@ function pre_downl(){
   }
   let hardLvlInf = t_sum_h;
   download('results.txt', `Результаты для пользователя ${someUser}\nПростой:${ezLvlInf}\nСложный:${hardLvlInf}`);
+}
+
+if(!isTaped){
+  document.getElementById('start_game').disabled = true
 }
