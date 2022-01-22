@@ -2,6 +2,7 @@ let rectangleNumber = 6; //количество прямоугольников
 let curUser = localStorage.getItem('nickname');
 let usersList = '';
 let interval;
+localStorage.setItem('difficulty', 'Простой');
 
 if (localStorage.getItem('nickname')) {
   document.getElementById('start_game').disabled = false
